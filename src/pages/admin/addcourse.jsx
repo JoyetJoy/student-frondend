@@ -48,11 +48,9 @@ function AddCourseForm() {
               <label className="block text-gray-700 mb-2">Duration (in hours)</label>
               <input
                 className="w-full p-2 border border-gray-300 rounded"
-                type="number"
+                type="text"
                 {...register('duration', {
                   required: 'Duration is required',
-                  min: { value: 1, message: 'Duration must be at least 1 hour' },
-                  max: { value: 24, message: 'Duration cannot exceed 24 hours' }
                 })}
               />
               {errors.duration && <span className="text-red-500 text-sm">{errors.duration.message}</span>}

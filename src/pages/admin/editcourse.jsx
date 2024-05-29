@@ -74,8 +74,8 @@ function EditCourseForm() {
                 <label className="block text-gray-700 mb-2">Duration</label>
                 <input
                   className="w-full p-2 border border-gray-300 rounded"
-                  type="number"
-                  {...register('duration', { required: 'Fees is required' })}
+                  type="text"
+                  {...register('duration', { required: 'Duration is required' })}
                 />
                 {errors.duration && <span className="text-red-500 text-sm">{errors.duration.message}</span>}
               </div>
