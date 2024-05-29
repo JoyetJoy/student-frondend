@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import signupImage from '../assets/StudentSignup.png'
+import signupImage from '../../assets/StudentSignup.png'
 import { Link ,useNavigate} from 'react-router-dom';
-import Button from '../components/button';
-import axiosInstance from '../instance/axiosInstance';
+import Button from '../../components/button';
+import axiosInstance from '../../instance/axiosInstance';
 
 
 function Signup() {
