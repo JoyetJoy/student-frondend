@@ -66,7 +66,7 @@ function Signup() {
         setSuccess('Registration Successful');
         setTimeout(() => {
           setSuccess(null);
-          navigate('/');
+          navigate('/user/login');
         }, 2000);
       }catch(error){
         if(error.response&&error.response.status===400){
@@ -100,7 +100,7 @@ function Signup() {
           <input className='h-7 w-full mt-5 mb-1 placeholder-sm pl-3 rounded-sm' placeholder='Password' type='password' name='password' value={inputs.password} onChange={handleChange} />
           <input className='h-7 w-full mt-5 mb-1 placeholder-sm pl-3 rounded-sm' placeholder='Confirm Password' type='password' name='confirmpassword' value={inputs.confirmpassword} onChange={handleChange} />
           {error? <span className='text-red-500 text-[0.80rem]'>{error}</span>:<span className='text-green-400 text-[0.80rem]'>{success}</span>}
-          <div className='text-[0.80rem] text-white w-full'>Already have an account? <Link to='/' className='text-custom-primary font-semibold hover:text-red-300'>Login</Link></div>
+          <div className='text-[0.80rem] text-white w-full'>Already have an account? <Link to='/user/login' className='text-custom-primary font-semibold hover:text-red-300'>Login</Link></div>
           <Button type='submit' className='bg-white p-2 rounded-sm mt-4 w-full h-9 font-bold text-black  hover:bg-blue-400 flex items-center justify-center' content='Submit' />
         </form>
       </div>

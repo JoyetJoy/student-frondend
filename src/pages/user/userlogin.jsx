@@ -22,8 +22,8 @@ function Login() {
       setError(null);
       setTimeout(() => {
         setSuccess(null);
-        navigate('/userhome');
-      }, 2000);
+        navigate('/user/userhome');
+      }, 1000);
     } catch (error) {
       if (error.response && error.response.status === 400) {
         setError(error.response.data.message || 'Login failed. Please try again');
@@ -33,7 +33,7 @@ function Login() {
       setSuccess(null);
       setTimeout(() => {
         setError(null);
-      }, 2000);
+      }, 1000);
     }
   };
 
@@ -70,7 +70,7 @@ function Login() {
           />
           {errors.password && <span className='text-[0.80rem] text-red-500'>{errors.password.message}</span>}
           <div className='text-[0.80rem] text-white w-full'>
-            Don't have an account? <Link to='/signup' className='text-custom-primary font-semibold hover:text-red-300'>Register</Link>
+            Don't have an account? <Link to='/user/signup' className='text-custom-primary font-semibold hover:text-red-300'>Register</Link>
           </div>
           {error && <span className='text-[0.80rem] text-red-500'>{error}</span>}
           {success && <span className='text-green-400 text-[0.80rem]'>{success}</span>}
