@@ -4,44 +4,10 @@ import LogoutIcon from "@mui/icons-material/Logout";
 
 const Navbar = ({ setUsers }) => {
   const navigate = useNavigate();
-  const [search, setSearch] = useState("");
-  const [debouncedSearch, setDebouncedSearch] = useState("");
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-    return () => {
-      setIsMounted(false);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (isMounted) {
-      const timerId = setTimeout(() => {
-        setDebouncedSearch(search);
-      }, 1000);
-
-      return () => {
-        clearTimeout(timerId);
-      };
-    }
-  }, [search, isMounted]);
-
-  useEffect(() => {
-    if (debouncedSearch) {
-      history.push(`/searchproduct/${debouncedSearch}`);
-      console.log("Search value:", debouncedSearch);
-    }
-  }, [debouncedSearch, history]);
-
-  const handleChange = (e) => {
-    setSearch(e.target.value);
-  };
 
   const logOut = (e) => {
     e.preventDefault();
-    setUsers = [];
-    navigate("/");
+    navigate("/admin/login");
   };
 
   return (
@@ -50,17 +16,12 @@ const Navbar = ({ setUsers }) => {
         STUDENTS
       </div>
       <div className="w-3/5 h-10 flex items-center ">
-        <input
-          className="w-4/5 h-8 border rounded flex items-center pl-3"
-          placeholder="Search..."
-          onChange={handleChange}
-        />
       </div>
       <div className="h-full w-2/6 flex items-center justify-end gap-[10%] pr-10">
         <div className="text-xl text-white">
-          <Link to="/home">Home</Link>
+          <Link to="/admin/adminhome">Home</Link>
         </div>
-        <div className="text-xl text-white">Account</div>
+      
         <div className="text-white" onClick={logOut}>
           <LogoutIcon />
         </div>
