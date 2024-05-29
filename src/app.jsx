@@ -9,6 +9,7 @@ import AdminSignup from './pages/admin/signup'
 import Adminhome from './pages/admin/adminhome'
 import Addcourse from './pages/admin/addcourse'
 import Admincourses from './pages/admin/coursespage'
+import Editcourse from './pages/admin/editcourse'
 
 function app() {
   return (
@@ -23,6 +24,7 @@ function app() {
         <Route path='/admin/adminhome' element={<Adminhome/>}/>
         <Route path='/admin/addcourse' element={<Addcourse/>}/>
         <Route path='/admin/courses' element={<Admincourses/>}/>
+        <Route path='/admin/editcourse/:id' element={<Editcourse/>}/>
     </Routes>
       
     </BrowserRouter>

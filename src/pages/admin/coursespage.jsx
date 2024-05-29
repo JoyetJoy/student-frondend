@@ -67,8 +67,7 @@ function CoursesList() {
         </div>
       </main>
     </div>
-    
-    import Navbar from '../../components/navbar'; // Import the Navbar component</div>
+    </div>
   );
 }
 
