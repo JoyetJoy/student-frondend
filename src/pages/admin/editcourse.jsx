@@ -1,12 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { useNavigate, useParams } from 'react-router-dom';
-import axiosInstance from '../../instance/axiosInstance';
-import Sidebar from '../../components/adminsidebar'; // Import the Sidebar component
-import Navbar from '../../components/adminnavbar'; // Import the Navbar component
+import React, { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { useNavigate, useParams } from "react-router-dom";
+import axiosInstance from "../../instance/axiosInstance";
+import Sidebar from "../../components/adminsidebar"; // Import the Sidebar component
+import Navbar from "../../components/adminnavbar"; // Import the Navbar component
 
 function EditCourseForm() {
-  const { register, handleSubmit, formState: { errors }, setValue } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setValue,
+  } = useForm();
   const navigate = useNavigate();
   const { id } = useParams(); // Changed from courseId to id
   const [loading, setLoading] = useState(true);
@@ -14,34 +19,45 @@ function EditCourseForm() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axiosInstance.get(`/admin/editcourse?courseId=${id}`);
+        const response = await axiosInstance.get(
+          `/admin/editcourse?courseId=${id}`
+        );
         const courseData = response.data.courseData;
         console.log(courseData); // Log the entire courseData to inspect
-        setValue('coursename', courseData.Coursename);
-        setValue('description', courseData.Description);
-        setValue('duration', courseData.Duration);
-        setValue('fees', courseData.Fees);
-        setValue('instructor', courseData.Instructor);
+        setValue("coursename", courseData.Coursename);
+        setValue("description", courseData.Description);
+        setValue("duration", courseData.Duration);
+        setValue("fees", courseData.Fees);
+        setValue("instructor", courseData.Instructor);
         setLoading(false);
       } catch (error) {
-        console.error('Error fetching course data:', error);
+        console.error("Error fetching course data:", error);
       }
     }
     fetchData();
   }, [id, setValue]);
-  
 
   const onSubmit = async (data) => {
-    try {console.log(data,'lplplp');
+    try {
+      console.log(data, "lplplp");
       await axiosInstance.post(`/admin/editcoursepost?courseId=${id}`, data);
-      navigate('/admin/courses'); // Navigate to the courses list after successful submission
+      navigate("/admin/courses"); // Navigate to the courses list after successful submission
     } catch (error) {
-      console.error('Error editing course:', error);
+      console.error("Error editing course:", error);
     }
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className=" h-full flex items-center justify-center mt-[20%] font-semibold text-lg">
+        <img
+          className="w-20 h-20 animate-spin mr-6"
+          src="https://www.svgrepo.com/show/199956/loading-loader.svg"
+          alt="Loading icon"
+        />{" "}
+        Loading
+      </div>
+    );
   }
 
   return (
@@ -58,44 +74,72 @@ function EditCourseForm() {
                 <input
                   className="w-full p-2 border border-gray-300 rounded"
                   type="text"
-                  {...register('coursename', { required: 'Course name is required' })}
+                  {...register("coursename", {
+                    required: "Course name is required",
+                  })}
                 />
-                {errors.coursename && <span className="text-red-500 text-sm">{errors.coursename.message}</span>}
+                {errors.coursename && (
+                  <span className="text-red-500 text-sm">
+                    {errors.coursename.message}
+                  </span>
+                )}
               </div>
               <div className="mb-4">
                 <label className="block text-gray-700 mb-2">Description</label>
                 <textarea
                   className="w-full p-2 border border-gray-300 rounded"
-                  {...register('description', { required: 'Description is required' })}
+                  {...register("description", {
+                    required: "Description is required",
+                  })}
                 ></textarea>
-                {errors.description && <span className="text-red-500 text-sm">{errors.description.message}</span>}
+                {errors.description && (
+                  <span className="text-red-500 text-sm">
+                    {errors.description.message}
+                  </span>
+                )}
               </div>
               <div className="mb-4">
                 <label className="block text-gray-700 mb-2">Duration</label>
                 <input
                   className="w-full p-2 border border-gray-300 rounded"
                   type="text"
-                  {...register('duration', { required: 'Duration is required' })}
+                  {...register("duration", {
+                    required: "Duration is required",
+                  })}
                 />
-                {errors.duration && <span className="text-red-500 text-sm">{errors.duration.message}</span>}
+                {errors.duration && (
+                  <span className="text-red-500 text-sm">
+                    {errors.duration.message}
+                  </span>
+                )}
               </div>
               <div className="mb-4">
                 <label className="block text-gray-700 mb-2">Fees</label>
                 <input
                   className="w-full p-2 border border-gray-300 rounded"
                   type="number"
-                  {...register('fees', { required: 'Fees is required' })}
+                  {...register("fees", { required: "Fees is required" })}
                 />
-                {errors.fees && <span className="text-red-500 text-sm">{errors.fees.message}</span>}
+                {errors.fees && (
+                  <span className="text-red-500 text-sm">
+                    {errors.fees.message}
+                  </span>
+                )}
               </div>
               <div className="mb-4">
                 <label className="block text-gray-700 mb-2">Instructor</label>
                 <input
                   className="w-full p-2 border border-gray-300 rounded"
                   type="text"
-                  {...register('instructor', { required: 'Instructor name is required' })}
+                  {...register("instructor", {
+                    required: "Instructor name is required",
+                  })}
                 />
-                {errors.instructor && <span className="text-red-500 text-sm">{errors.instructor.message}</span>}
+                {errors.instructor && (
+                  <span className="text-red-500 text-sm">
+                    {errors.instructor.message}
+                  </span>
+                )}
               </div>
               <button
                 type="submit"

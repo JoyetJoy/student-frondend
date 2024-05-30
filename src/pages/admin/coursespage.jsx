@@ -6,12 +6,14 @@ import Navbar from '../../components/adminnavbar';
 
 function CoursesList() {
   const [courses, setCourses] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
       try {console.log('khjh');
         const response = await axiosInstance.get('/admin/courses');
         setCourses(response.data.courses);
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching courses:', error);
       }
@@ -30,6 +32,19 @@ function CoursesList() {
       }
     }
   };
+
+  if (loading) {
+    return (
+      <div className=" h-full flex items-center justify-center mt-[20%] font-semibold text-lg">
+        <img
+          className="w-20 h-20 animate-spin mr-6"
+          src="https://www.svgrepo.com/show/199956/loading-loader.svg"
+          alt="Loading icon"
+        />{" "}
+        Loading
+      </div>
+    );
+  }
 
   return (
     <div>
