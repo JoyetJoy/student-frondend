@@ -8,16 +8,17 @@ const axiosInstance=axios.create({
     timeout:10000
 })
 
-axiosInstance.interceptors.request.use((config)=>{
-    const token= localStorage.getItem('jwt')
+axiosInstance.interceptors.request.use((config) => {
 
-    if (token){
-        config.headers['Authorization']=`Bearer ${token}`
+    const token = localStorage.getItem('jwt')
+    if (token) {
+      config.headers['Authorization'] = `Bearer ${token}`
     }
-    return config;
-},(error)=>{
+    return config
+  
+  }, (error) => {
     console.log(error);
     return Promise.reject(error)
-})
-
-export default axiosInstance
+  })
+  
+  export default axiosInstance;

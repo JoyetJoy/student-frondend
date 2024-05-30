@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axiosInstance from '../../instance/axiosInstance';
 import Sidebar from '../../components/adminsidebar';
-import Navbar from '../../components/navbar';
+import Navbar from '../../components/adminnavbar';
 
 function CoursesList() {
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
-      try {
+      try {console.log('khjh');
         const response = await axiosInstance.get('/admin/courses');
         setCourses(response.data.courses);
       } catch (error) {

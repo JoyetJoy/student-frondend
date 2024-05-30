@@ -17,7 +17,7 @@ function Login() {
   const onSubmit = async (data) => {
     try {
       const response = await axiosInstance.post('/login', data);
-      console.log(response.data);
+      localStorage.setItem('jwt',response.data.token)
       setSuccess('Login Successful');
       setError(null);
       setTimeout(() => {

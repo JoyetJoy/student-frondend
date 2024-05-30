@@ -1,16 +1,28 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate} from "react-router-dom";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { jwtDecode } from "jwt-decode";
+
 
 const id='6657b08a16427e2d979e385f'
-const Navbar = ({ setUsers }) => {
+const Navbar = () => {
   const navigate = useNavigate();
 
   const logOut = (e) => {
     e.preventDefault();
-    setUsers = [];
-    navigate("/user/login");
-  };
+    const token = localStorage.getItem("jwt");
+    if (token) {
+      const payload = jwtDecode(token);
+      if (payload.role == "admin"){
+        localStorage.removeItem("jwt");
+        navigate('/admin/login')
+      } else{
+        localStorage.removeItem("jwt");
+        navigate('/user/login')
+      }
+      }
+}
+
 
   return (
     <div className="w-full h-20 flex flex-row items-center bg-[#173f59]">

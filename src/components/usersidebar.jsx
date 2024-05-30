@@ -30,9 +30,9 @@ function Sidebar({ id }) {
       <nav className="flex-1 px-2 space-y-2 font-semibold text-xl">
         <Link to={`/user/account/${id}`} className="block px-4 py-2 rounded hover:bg-blue-700">Profile</Link>
         <hr className="border-white" />
-        <Link to={`/user/editprofile/${id}`} className="block px-4 py-2 rounded hover:bg-blue-700">Edit Profile</Link>
+        <Link to={`/user/editprofile/${id}`} className=" w-full block px-4 py-2 rounded hover:bg-blue-700">Edit Profile</Link>
         <hr className="border-white" />
-        <button onClick={() => setShowConfirmation(true)} className="block px-4 py-2 rounded hover:bg-blue-700">Delete Profile</button>
+        <button onClick={() => setShowConfirmation(true)} className="w-full flex float-start  px-4 py-2 rounded hover:bg-blue-700">Delete Profile</button>
         <hr className="border-white" />
       </nav>
       {showConfirmation && (

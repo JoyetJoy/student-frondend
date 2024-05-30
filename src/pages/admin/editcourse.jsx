@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
 import axiosInstance from '../../instance/axiosInstance';
 import Sidebar from '../../components/adminsidebar'; // Import the Sidebar component
-import Navbar from '../../components/navbar'; // Import the Navbar component
+import Navbar from '../../components/adminnavbar'; // Import the Navbar component
 
 function EditCourseForm() {
   const { register, handleSubmit, formState: { errors }, setValue } = useForm();
