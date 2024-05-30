@@ -61,7 +61,7 @@ function CoursesList() {
                         readOnly
                       />
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">{course.Duration} hours</td>
+                    <td className="px-6 py-4 whitespace-nowrap">{course.Duration}</td>
                     <td className="px-6 py-4 whitespace-nowrap">{course.Fees}</td>
                     <td className="px-6 py-4 whitespace-nowrap">{course.Instructor}</td>
                     <td className="px-6 py-4 whitespace-nowrap">

@@ -82,11 +82,6 @@ function Signup() {
       
     }
   }
- 
-  setTimeout(() => {
-    setSuccess(null);
-  }, 2000);
-  
 
   return (
     <>

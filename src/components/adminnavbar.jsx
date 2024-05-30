@@ -16,7 +16,7 @@ const navigate = useNavigate();
         navigate('/admin/login')
       } else{
         localStorage.removeItem("jwt");
-        navigate('/user/login')
+        navigate('/')
       }
       }
 }
